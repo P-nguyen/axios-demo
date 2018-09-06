@@ -1,24 +1,35 @@
 const BASE_URL = 'http://api.reactprototypes.com';
-const API_KEY = '?key=testuser1234';
+const API_KEY = '?key=318';
 
-axios.get(`${BASE_URL}/todos${API_KEY}`).then(resp => {
-    const { todos } = resp.data;
-    const table = $('table tbody');
+//get list of all todo items
+axios.get(`${BASE_URL}/todos${API_KEY}`).then(getTodoData);
 
-    addToDom(todos, table);
-});
+function getTodoData(response){
+    console.log(response)
+}
 
-const addToDom = (list, container) => {
-    const tableRows = list.map((item, index) => {
+//Geet single todo Item
+//axios.get(`${BASE_URL}/todos/${idToGet}${API_KEY});
 
-        const tableData = [
-            $(`<td>${index + 1}</td>`),
-            $(`<td>${item.title}</td>`),
-            item.complete ? $(`<td class="text-success">Yes</td>`) : $(`<td class="text-danger">No</td>`)
-        ];
+// const newItem = {
+//     title: 'yay',
+//     details: 'i\'m a month behind! 418 for life!'
+// };
 
-        return $('<tr>').append(tableData);
-    });
+//add new to do item
+// axios.post(`${BASE_URL}/todos${API_KEY}`, newItem).then( resp=>{
+//     console.log('addItem', resp);
+// });
 
-    container.append(tableRows);
-};
+
+//delete todo item
+// let idToDelete = '5b91b496e3e0f45f2ed5ccf4';
+// axios.delete(`${BASE_URL}/todos/${idToDelete}${API_KEY}`).then(resp => {
+//     console.log('Delete Response:', resp);
+// })
+
+
+//toggle todo item
+//axios.put(`${BASE_URL}/todos/${idToToggle}${API_KEY}`)
+
+
